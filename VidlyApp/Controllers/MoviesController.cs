@@ -27,7 +27,7 @@ namespace VidlyApp.Controllers
             var movies = _context.Movies.Include(m => m.MovieType).ToList();
             return View(movies);
         }
-        public ActionResult Create()
+        public ActionResult MovieForm()
         {
             var membershipTypes = _context.moviesTypes.ToList();
             var viewModel = new MovieTypesViewModel
@@ -66,7 +66,7 @@ namespace VidlyApp.Controllers
                 movie = movie,
                 MoviesTypes = _context.moviesTypes.ToList()
             };
-            return View("Create", viewModel);
+            return View("MovieForm", viewModel);
         }
         public ActionResult Random()
         {

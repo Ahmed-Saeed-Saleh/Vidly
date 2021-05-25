@@ -24,7 +24,7 @@ namespace VidlyApp.Controllers
             var customers = _context.Customers.Include(c=> c.MembershipType).ToList();
             return View(customers);
         }
-        public ActionResult New()
+        public ActionResult CustomerForm()
         {
             var membershipTypes = _context.membershipTypes.ToList();
             var viewModel = new CustomerViewModel
