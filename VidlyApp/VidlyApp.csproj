@@ -215,8 +215,13 @@
     <Compile Include="Migrations\202105241548519_UpMovieTable.Designer.cs">
       <DependentUpon>202105241548519_UpMovieTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105271611521_intialll.cs" />
+    <Compile Include="Migrations\202105271611521_intialll.Designer.cs">
+      <DependentUpon>202105271611521_intialll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Min18Years.cs" />
     <Compile Include="Models\MoviesType.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -341,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105241548519_UpMovieTable.resx">
       <DependentUpon>202105241548519_UpMovieTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271611521_intialll.resx">
+      <DependentUpon>202105271611521_intialll.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

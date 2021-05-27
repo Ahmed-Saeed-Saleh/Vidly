@@ -29,6 +29,7 @@ namespace VidlyApp.Controllers
             var membershipTypes = _context.membershipTypes.ToList();
             var viewModel = new CustomerViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = membershipTypes,
             };
             return View(viewModel);
@@ -36,8 +37,18 @@ namespace VidlyApp.Controllers
         [HttpPost] // to be called using httppost not htttpget
                    // if the action modfieies a data base it should be accessible using
                    // http post not http get 
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new CustomerViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.membershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
             if(customer.Id == 0)    
                 _context.Customers.Add(customer);
             else

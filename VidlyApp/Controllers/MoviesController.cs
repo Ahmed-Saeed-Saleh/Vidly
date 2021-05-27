@@ -5,7 +5,6 @@ using VidlyApp.Models;
 using System.Data.Entity;
 using System.Linq;
 using System;
-using System.Data.Entity.Validation;
 
 namespace VidlyApp.Controllers
 {
@@ -29,16 +28,28 @@ namespace VidlyApp.Controllers
         }
         public ActionResult MovieForm()
         {
+
             var membershipTypes = _context.moviesTypes.ToList();
             var viewModel = new MovieTypesViewModel
             {
+                movie = new Movie(),
                 MoviesTypes = membershipTypes,
             };
             return View(viewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var view = new MovieTypesViewModel
+                {
+                    movie = movie,
+                    MoviesTypes = _context.moviesTypes.ToList()
+                };
+                return View("MovieForm", view);
+            }
             if (movie.Id == 0)
             {
 
