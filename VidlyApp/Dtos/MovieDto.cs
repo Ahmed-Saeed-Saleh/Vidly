@@ -1,22 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
-namespace VidlyApp.Models
+namespace VidlyApp.Dtos
 {
-    public class Movie
+    public class MovieDto
     {
         [Required]
         public string Name { get; set; }
         public int Id { get; set; }
-        public MoviesType MovieType { get; set; }
         [Required]
         public byte MoviesTypeId { get; set; }
-        [Required]
         public DateTime ReleasedDate { get; set; }
-        [Required]
         public DateTime DateAdded { get; set; }
-        [Required]
-        [Range(1,20)]
+        [Range(1, 20)]
         public short NumberInStock { get; set; }
     }
 }
